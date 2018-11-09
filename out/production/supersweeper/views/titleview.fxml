@@ -3,5 +3,7 @@
 <?import javafx.scene.control.Button?>
 
 <GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.TitleController">
-    <Button></Button>
+    <Button onAction="#handleStartClassic" translateX="200" translateY="100">Play classic (Squares)</Button>
+    <Button onAction="#handleStartTrio" translateX="200" translateY="150">Play trio (Triangles)</Button>
+    <Button onAction="#handleStartHex" translateX="200" translateY="200">Play hex (Hexagons)</Button>
 </GridPane>
