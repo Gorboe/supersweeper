@@ -27,7 +27,7 @@ public class Square extends Cell {
     }
 
     public void draw(GraphicsContext gc){
-        if(!isRevieled()){
+        if(!isRevealed()){
             gc.setFill(Color.BLACK);
             gc.fillRect(posX, posY, width, height);
             return;

@@ -5,11 +5,11 @@ import javafx.scene.paint.Color;
 
 public abstract class Cell {
     private boolean bomb;
-    private boolean revieled;
+    private boolean revealed;
     private int neighbors;
 
     public Cell(){
-        revieled = true;
+        revealed = true;
         bomb = false;
     }
 
@@ -17,12 +17,12 @@ public abstract class Cell {
         return bomb;
     }
 
-    public boolean isRevieled() {
-        return revieled;
+    public boolean isRevealed() {
+        return revealed;
     }
 
-    public void setRevieled(boolean revieled) {
-        this.revieled = revieled;
+    public void setRevealed(boolean revealed) {
+        this.revealed = revealed;
     }
 
     public void setBomb(boolean bomb) {

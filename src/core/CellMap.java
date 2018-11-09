@@ -18,9 +18,6 @@ public class CellMap {
         createMap();
         setBombs();
         setNumbers();
-        /*
-        * square, trio or hex??? what [][] to create
-        * */
     }
 
     private void createMap(){
@@ -77,6 +74,60 @@ public class CellMap {
                     neighborCount++;
                 }
                 cells[j][i].setNeighbors(neighborCount);
+            }
+        }
+    }
+
+    public void flowEmptyTiles(int j, int i){
+
+        if(cells[j][i].isBomb()) return;
+
+        if(i-1 >= 0 && j-1 >= 0 && !cells[j-1][i-1].isRevealed()){ // -1 | -1
+            cells[j-1][i-1].setRevealed(true);
+            if(cells[j-1][i-1].getNeighbors() == 0){
+                flowEmptyTiles(j-1, i-1);
+            }
+        }
+        if(i-1 >= 0 && !cells[j][i-1].isRevealed()){ // 0 | -1
+            cells[j][i-1].setRevealed(true);
+            if(cells[j][i-1].getNeighbors() == 0){
+                flowEmptyTiles(j, i-1);
+            }
+        }
+        if(i-1 >= 0 && j+1 < width && !cells[j+1][i-1].isRevealed()){ // 1 | -1
+            cells[j+1][i-1].setRevealed(true);
+            if(cells[j+1][i-1].getNeighbors() == 0){
+                flowEmptyTiles(j+1, i-1);
+            }
+        }
+        if(j-1 >= 0 && !cells[j-1][i].isRevealed()){ // -1 | 0
+            cells[j-1][i].setRevealed(true);
+            if(cells[j-1][i].getNeighbors() == 0){
+                flowEmptyTiles(j-1, i);
+            }
+        }
+        if(j+1 < width && !cells[j+1][i].isRevealed()){ // 1 | 0
+            cells[j+1][i].setRevealed(true);
+            if(cells[j+1][i].getNeighbors() == 0){
+                flowEmptyTiles(j+1, i);
+            }
+        }
+        if(j-1 >= 0 && i+1 < height && !cells[j-1][i+1].isRevealed()){ // -1 | 1
+            cells[j-1][i+1].setRevealed(true);
+            if(cells[j-1][i+1].getNeighbors() == 0){
+                flowEmptyTiles(j-1, i+1);
+            }
+        }
+        if(i+1 < height && !cells[j][i+1].isRevealed()){ // 0 | 1
+            cells[j][i+1].setRevealed(true);
+            if(cells[j][i+1].getNeighbors() == 0){
+                flowEmptyTiles(j, i+1);
+            }
+        }
+        if(i+1 < height && j+1 < width && !cells[j+1][i+1].isRevealed()){ // 1 | 1
+            cells[j+1][i+1].setRevealed(true);
+            if(cells[j+1][i+1].getNeighbors() == 0){
+                flowEmptyTiles(j+1, i+1);
             }
         }
     }

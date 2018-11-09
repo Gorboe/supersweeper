@@ -1,8 +1,10 @@
 package core;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -17,6 +19,10 @@ public class Main extends Application {
     public static final int SCREEN_WIDTH = 600;
     public static final int SCREEN_HEIGHT = 600;
 
+    public static Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Main.primaryStage = primaryStage;
@@ -27,9 +33,14 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/views/" + sceneName));
         GridPane root = loader.load();
         Scene scene = new Scene(root, SCREEN_WIDTH, SCREEN_HEIGHT);
-
         primaryStage.setTitle("SuperSweeper");
         primaryStage.setScene(scene);
         primaryStage.show();
+        scene.setOnMouseClicked(event -> mouseClickedEvent(event));
+    }
+
+    public static void mouseClickedEvent(MouseEvent e){
+        
+        System.out.println("hi");
     }
 }
