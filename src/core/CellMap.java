@@ -1,23 +1,33 @@
 package core;
 
 import celltypes.Square;
+import celltypes.Triangle;
 import javafx.scene.canvas.GraphicsContext;
 
 public class CellMap {
     private int width;
     private int height;
+    private String type;
     private Cell[][] cells;
 
     public CellMap(int width, int height, String type){
         this.width = width;
         this.height = height;
+        this.type = type;
 
         if(type.equals("square")){
             cells = new Square[width][height];
+        }else if(type.equals("triangle")){
+            cells = new Triangle[width][height];
         }
+
         createMap();
-        setBombs();
-        setNumbers();
+        //setBombs();
+        //setNumbers();
+    }
+
+    public String getType() {
+        return type;
     }
 
     public Cell[][] getCells() {
@@ -25,12 +35,14 @@ public class CellMap {
     }
 
     private void createMap(){
+
         int y = 0;
         int x;
         for(int i = 0; i < height; i++){
             x = 0;
             for(int j = 0; j < width; j++){
-                cells[j][i] = new Square(x, y);
+                if(type.equals("square")) cells[j][i] = new Square(x, y);
+                if(type.equals("triangle")) cells[j][i] = new Triangle(x, y);
                 x += cells[0][0].getWidth()+1;
             }
             y += cells[0][0].getHeight()+1;
