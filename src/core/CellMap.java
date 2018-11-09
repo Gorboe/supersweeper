@@ -2,6 +2,7 @@ package core;
 
 import celltypes.Square;
 import celltypes.Triangle;
+import controllers.TrioController;
 import javafx.scene.canvas.GraphicsContext;
 
 public class CellMap {
@@ -22,7 +23,7 @@ public class CellMap {
         }
 
         createMap();
-        //setBombs();
+        setBombs();
         //setNumbers();
     }
 
@@ -67,8 +68,8 @@ public class CellMap {
     private void setBombs(){
         int bombs = 0;
         while(bombs < 20){
-            int randomX = (int)(Math.random() * cells.length);
-            int randomY = (int)(Math.random() * cells.length);
+            int randomX = (int)(Math.random() * TrioController.getCellWidth());
+            int randomY = (int)(Math.random() * TrioController.getCellHeight());
             if(!cells[randomX][randomY].isBomb()){
                 cells[randomX][randomY].setBomb(true);
                 bombs++;
