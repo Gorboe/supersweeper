@@ -9,7 +9,7 @@ import javafx.scene.paint.Color;
 public class CellMap {
     private int width;
     private int height;
-    private String type;
+    private static String type;
     private Cell[][] cells;
 
     public CellMap(int width, int height, String type){
@@ -28,7 +28,7 @@ public class CellMap {
         setNumbers();
     }
 
-    public String getType() {
+    public static String getType() {
         return type;
     }
 

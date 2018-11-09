@@ -10,7 +10,7 @@ public abstract class Cell {
     private int neighbors;
 
     public Cell(){
-        revealed = true;
+        revealed = false;
         bomb = false;
         flagged = false;
     }

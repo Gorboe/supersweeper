@@ -1,6 +1,7 @@
 package core;
 
 import controllers.ClassicController;
+import controllers.TrioController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -42,34 +43,40 @@ public class Main extends Application {
 
     public static void mouseClickedEvent(MouseEvent e){
         //System.out.println(e.getButton());
-        Cell[][] cells = ClassicController.getMap().getCells();
-        for(int i = 0; i < ClassicController.getCellWidth(); i++){
-            for(int j = 0; j < ClassicController.getCellHeight(); j++){
-                if(e.getX() > cells[j][i].getPosX() && e.getX() < cells[j][i].getPosX() + cells[j][i].getWidth()
-                        && e.getY() > cells[j][i].getPosY() && e.getY() < cells[j][i].getPosY() + cells[j][i].getHeight()){
+        if(CellMap.getType().equals("square")){
+            Cell[][] cells = ClassicController.getMap().getCells();
+            for(int i = 0; i < ClassicController.getCellWidth(); i++){
+                for(int j = 0; j < ClassicController.getCellHeight(); j++){
+                    if(e.getX() > cells[j][i].getPosX() && e.getX() < cells[j][i].getPosX() + cells[j][i].getWidth()
+                            && e.getY() > cells[j][i].getPosY() && e.getY() < cells[j][i].getPosY() + cells[j][i].getHeight()){
 
-                    if(e.getButton().toString().equals("PRIMARY")){
-                        if(cells[j][i].isFlagged()) return;
+                        if(e.getButton().toString().equals("PRIMARY")){
+                            if(cells[j][i].isFlagged()) return;
 
-                        if(cells[j][i].isBomb()){
-                            ClassicController.getMap().handleGameOver();
+                            if(cells[j][i].isBomb()){
+                                ClassicController.getMap().handleGameOver();
+                            }
+
+                            cells[j][i].setRevealed(true);
+                            if(cells[j][i].getNeighbors() == 0){
+                                ClassicController.getMap().flowEmptyTiles(j, i);
+                            }
+                        }else if(e.getButton().toString().equals("SECONDARY")){
+                            if(cells[j][i].isFlagged()){
+                                cells[j][i].setFlagged(false);
+                            }else{
+                                cells[j][i].setFlagged(true);
+                            }
                         }
 
-                        cells[j][i].setRevealed(true);
-                        if(cells[j][i].getNeighbors() == 0){
-                            ClassicController.getMap().flowEmptyTiles(j, i);
-                        }
-                    }else if(e.getButton().toString().equals("SECONDARY")){
-                        if(cells[j][i].isFlagged()){
-                            cells[j][i].setFlagged(false);
-                        }else{
-                            cells[j][i].setFlagged(true);
-                        }
+                        ClassicController.draw();
                     }
-
-                    ClassicController.draw();
                 }
             }
+        }else if(CellMap.getType().equals("triangle")){
+            System.out.println("i give up :( need points from triangle or something");
+
         }
+
     }
 }
