@@ -7,11 +7,11 @@ import javafx.scene.canvas.Canvas;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GameController implements Initializable {
+public class HexController implements Initializable {
     @FXML Canvas canvas;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("initializing stuff in controller");
+        System.out.println("initializing stuff in hex controller");
     }
 }
