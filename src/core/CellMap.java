@@ -120,12 +120,82 @@ public class CellMap {
         }else if(type.equals("triangle")){
             for(int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
-                    if(i-1 >= 0 && j-1 >= 0 && cells[j-1][i-1].isBomb()){ // -1 | -1
-                        neighborCount = 1;
+                    neighborCount = 0;
+                    if(j % 2 == 0){
+                        if(i-1 >= 0 && j-1 >= 0 && cells[j-1][i-1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i-1 >= 0 && cells[j][i-1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(j+1 < width && cells[j+1][i].isBomb()){
+                            neighborCount++;
+                        }
+                        if(j+2 < width && cells[j+2][i].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i+1 < height && j+3 < width && cells[j+3][i+1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i+1 < height && j+2 < width && cells[j+2][i+1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i+1 < height && j+1 < width && cells[j+1][i+1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(j-1 >= 0 && cells[j-1][i].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i-1 >= 0 && j-2 >= 0 && cells[j-2][i-1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i+1 < height && cells[j][i+1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i+1 < height && j-1 >= 0 && cells[j-1][i+1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(j-2 >= 0 && cells[j-2][i].isBomb()){
+                            neighborCount++;
+                        }
+                    }else{
+                        if(i-1 >= 0 && j-2 >= 0 && cells[j-2][i-1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i-1 >= 0 && cells[j-1][i-1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i-1 >= 0 && cells[j][i-1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i-1 >= 0 && j+1 < width && cells[j+1][i-1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(j+2 < width && cells[j+2][i].isBomb()){
+                            neighborCount++;
+                        }
+                        if(j+1 < width && cells[j+1][i].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i+1 < height && j+2 < width && cells[j+2][i+1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i+1 < height && j+1 < width && cells[j+1][i+1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(i+1 < height && cells[j][i+1].isBomb()){
+                            neighborCount++;
+                        }
+                        if(cells[j-1][i].isBomb()){
+                            neighborCount++;
+                        }
+                        if(j-2 >= 0 && cells[j-2][i].isBomb()){
+                            neighborCount++;
+                        }
+                        if(j-3 >= 0 && i-1 >= 0 && cells[j-3][i-1].isBomb()){
+                            neighborCount++;
+                        }
                     }
-
-
-
 
                     cells[j][i].setNeighbors(neighborCount);
                 }

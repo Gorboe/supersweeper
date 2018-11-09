@@ -84,12 +84,12 @@ public class Triangle extends Cell {
             gc.setFill(Color.GREY);
             gc.fillPolygon(xPoints, yPoints, 3);
             gc.setFill(setColor());
-            gc.setFont(Font.font("Verdana", 25));
+            gc.setFont(Font.font("Verdana", 20));
             if(getNeighbors() != 0){
                 if(!reversed){
                     gc.fillText(""+getNeighbors(), posX+5, posY+35);
                 }else{
-                    gc.fillText(""+getNeighbors(), posX+20, posY+20);
+                    gc.fillText(""+getNeighbors(), posX+25, posY+20);
                 }
             }
             return;
