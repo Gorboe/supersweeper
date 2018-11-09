@@ -46,6 +46,9 @@ public class Main extends Application {
             for(int j = 0; j < ClassicController.getCellHeight(); j++){
                 if(e.getX() > cells[j][i].getPosX() && e.getX() < cells[j][i].getPosX() + cells[j][i].getWidth()
                         && e.getY() > cells[j][i].getPosY() && e.getY() < cells[j][i].getPosY() + cells[j][i].getHeight()){
+                    if(cells[j][i].isBomb()){
+                        ClassicController.getMap().handleGameOver();
+                    }
                     cells[j][i].setRevealed(true);
                     if(cells[j][i].getNeighbors() == 0){
                         ClassicController.getMap().flowEmptyTiles(j, i);

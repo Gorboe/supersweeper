@@ -2,8 +2,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.canvas.Canvas?>
 
+<?import javafx.scene.control.Button?>
 <GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.ClassicController">
     <Canvas fx:id="canvas" width="600" height="600">
 
     </Canvas>
+    <Button onAction="#handleRestart" translateX="50" translateY="200">Restart</Button>
+    <Button onAction="#handleMainMenu" translateX="200" translateY="200">Main menu</Button>
+    <Button onAction="#handleExitGame" translateX="350" translateY="200">Exit game</Button>
 </GridPane>

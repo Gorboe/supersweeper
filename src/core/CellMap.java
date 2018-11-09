@@ -136,6 +136,14 @@ public class CellMap {
         }
     }
 
+    public void handleGameOver(){
+        for(int i = 0; i < height; i++){
+            for(int j = 0; j < width; j++){
+                cells[j][i].setRevealed(true);
+            }
+        }
+    }
+
     public void draw(GraphicsContext gc){
         for(int i = 0; i < height; i++){
             for(int j = 0; j < width; j++){

@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -40,5 +41,22 @@ public class ClassicController implements Initializable {
 
     public static void draw(){
         map.draw(gc);
+    }
+
+    public void handleRestart(){
+        map = new CellMap(cellWidth, cellHeight, "square");
+        draw();
+    }
+
+    public void handleMainMenu(){
+        try{
+            Main.changeScene("titleview.fxml");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void handleExitGame(){
+        System.exit(0);
     }
 }
