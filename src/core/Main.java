@@ -41,8 +41,7 @@ public class Main extends Application {
     }
 
     public static void mouseClickedEvent(MouseEvent e){
-        System.out.println(e.getButton());
-
+        //System.out.println(e.getButton());
         Cell[][] cells = ClassicController.getMap().getCells();
         for(int i = 0; i < ClassicController.getCellWidth(); i++){
             for(int j = 0; j < ClassicController.getCellHeight(); j++){

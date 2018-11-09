@@ -43,10 +43,8 @@ public class Square extends Cell {
                 gc.fillRect(posX, posY, width, height);
                 return;
             }else{
-                gc.setFill(Color.BLACK);
-                gc.fillRect(posX, posY, width, height);
                 gc.setFill(Color.RED);
-                gc.fillRect(posX+(double)getWidth()/2, posY+(double)getHeight()/2, 10, 10);
+                gc.fillRect(posX, posY, width, height);
                 return;
             }
         }
