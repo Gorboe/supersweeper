@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.canvas.Canvas?>
-
-<GridPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="core.Controller">
-    <Canvas fx:id="canvas" width="800" height="800">
-
-    </Canvas>
-</GridPane>
