@@ -15,7 +15,7 @@ public class TrioController implements Initializable {
     @FXML Canvas canvas;
     private static GraphicsContext gc;
     private static CellMap map;
-    private static final int cellWidth = 10;
+    private static final int cellWidth = 20;
     private static final int cellHeight = 10;
 
     public static CellMap getMap() {

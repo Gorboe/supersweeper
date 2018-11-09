@@ -35,18 +35,33 @@ public class CellMap {
     }
 
     private void createMap(){
-
         int y = 0;
         int x;
-        for(int i = 0; i < height; i++){
-            x = 0;
-            for(int j = 0; j < width; j++){
-                if(type.equals("square")) cells[j][i] = new Square(x, y);
-                if(type.equals("triangle")) cells[j][i] = new Triangle(x, y);
-                x += cells[0][0].getWidth()+1;
+        if(type.equals("square")){
+            for(int i = 0; i < height; i++){
+                x = 0;
+                for(int j = 0; j < width; j++){
+                    cells[j][i] = new Square(x, y);
+                    x += cells[0][0].getWidth()+1;
+                }
+                y += cells[0][0].getHeight()+1;
             }
-            y += cells[0][0].getHeight()+1;
+        }else if(type.equals("triangle")){
+            for(int i = 0; i < height; i++){
+                x = 0;
+                for(int j = 0; j < width; j++){
+                    if(j % 2 == 0){
+                        cells[j][i] = new Triangle(x, y, false);
+                        x+=1;
+                    }else{
+                        cells[j][i] = new Triangle(x, y, true);
+                        x += cells[0][0].getWidth()+1;
+                    }
+                }
+                y += cells[0][0].getHeight()+1;
+            }
         }
+
     }
 
     private void setBombs(){
