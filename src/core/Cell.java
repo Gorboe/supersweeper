@@ -6,11 +6,17 @@ import javafx.scene.paint.Color;
 public abstract class Cell {
     private boolean bomb;
     private boolean revealed;
+    private boolean flagged;
     private int neighbors;
 
     public Cell(){
         revealed = false;
         bomb = false;
+        flagged = false;
+    }
+
+    public boolean isFlagged() {
+        return flagged;
     }
 
     public boolean isBomb() {
@@ -19,6 +25,10 @@ public abstract class Cell {
 
     public boolean isRevealed() {
         return revealed;
+    }
+
+    public void setFlagged(boolean flagged) {
+        this.flagged = flagged;
     }
 
     public void setRevealed(boolean revealed) {

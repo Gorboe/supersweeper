@@ -38,9 +38,17 @@ public class Square extends Cell {
 
     public void draw(GraphicsContext gc){
         if(!isRevealed()){
-            gc.setFill(Color.BLACK);
-            gc.fillRect(posX, posY, width, height);
-            return;
+            if(!isFlagged()){
+                gc.setFill(Color.BLACK);
+                gc.fillRect(posX, posY, width, height);
+                return;
+            }else{
+                gc.setFill(Color.BLACK);
+                gc.fillRect(posX, posY, width, height);
+                gc.setFill(Color.RED);
+                gc.fillRect(posX+(double)getWidth()/2, posY+(double)getHeight()/2, 10, 10);
+                return;
+            }
         }
         if(!isBomb()){
             //display number
