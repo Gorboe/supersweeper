@@ -3,6 +3,7 @@ package celltypes;
 import core.Cell;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class Triangle extends Cell {
     private int posX;
@@ -82,17 +83,25 @@ public class Triangle extends Cell {
             //display number
             gc.setFill(Color.GREY);
             gc.fillPolygon(xPoints, yPoints, 3);
+            gc.setFill(setColor());
+            gc.setFont(Font.font("Verdana", 25));
+            if(getNeighbors() != 0){
+                if(!reversed){
+                    gc.fillText(""+getNeighbors(), posX+5, posY+35);
+                }else{
+                    gc.fillText(""+getNeighbors(), posX+20, posY+20);
+                }
+            }
             return;
         }
 
         //display bomb
         gc.setFill(Color.GREY);
         gc.fillPolygon(xPoints, yPoints, 3);
+        gc.setFill(Color.BLACK);
         if(!reversed){
-            gc.setFill(Color.BLACK);
             gc.fillOval(posX+5, posY+20, 15, 15);
         }else{
-            gc.setFill(Color.BLACK);
             gc.fillOval(posX+20, posY+5, 15, 15);
         }
     }

@@ -62,14 +62,20 @@ public class CellMap {
                 y += cells[0][0].getHeight()+1;
             }
         }
-
     }
 
     private void setBombs(){
         int bombs = 0;
+        int randomX = 0;
+        int randomY = 0;
         while(bombs < 20){
-            int randomX = (int)(Math.random() * TrioController.getCellWidth());
-            int randomY = (int)(Math.random() * TrioController.getCellHeight());
+            if(type.equals("square")){
+                randomX = (int)(Math.random() * cells.length);
+                randomY = (int)(Math.random() * cells.length);
+            }else if(type.equals("triangle")) {
+                randomX = (int)(Math.random() * TrioController.getCellWidth());
+                randomY = (int)(Math.random() * TrioController.getCellHeight());
+            }
             if(!cells[randomX][randomY].isBomb()){
                 cells[randomX][randomY].setBomb(true);
                 bombs++;
@@ -82,6 +88,7 @@ public class CellMap {
         if(type.equals("square")){
             for(int i = 0; i < height; i++){
                 for(int j = 0; j < width; j++){
+                    neighborCount = 0;
                     if(i-1 >= 0 && j-1 >= 0 && cells[j-1][i-1].isBomb()){ // -1 | -1
                         neighborCount++;
                     }
@@ -112,7 +119,13 @@ public class CellMap {
         }else if(type.equals("triangle")){
             for(int i = 0; i < height; i++) {
                 for (int j = 0; j < width; j++) {
-                    neighborCount = 1;
+                    if(i-1 >= 0 && j-1 >= 0 && cells[j-1][i-1].isBomb()){ // -1 | -1
+                        neighborCount = 1;
+                    }
+
+
+
+
                     cells[j][i].setNeighbors(neighborCount);
                 }
             }
