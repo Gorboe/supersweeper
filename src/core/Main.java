@@ -36,11 +36,11 @@ public class Main extends Application {
         primaryStage.setTitle("SuperSweeper");
         primaryStage.setScene(scene);
         primaryStage.show();
-        scene.setOnMouseClicked(event -> mouseClickedEvent(event));
+        scene.setOnMouseClicked(Main::mouseClickedEvent);
     }
 
     public static void mouseClickedEvent(MouseEvent e){
-        
+
         System.out.println("hi");
     }
 }
