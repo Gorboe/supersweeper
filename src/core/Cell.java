@@ -9,7 +9,7 @@ public abstract class Cell {
     private int neighbors;
 
     public Cell(){
-        revealed = true;
+        revealed = false;
         bomb = false;
     }
 
@@ -50,6 +50,8 @@ public abstract class Cell {
         return Color.PINK;
     }
 
+    public abstract int getPosX();
+    public abstract int getPosY();
     public abstract int getWidth();
     public abstract int getHeight();
     public abstract void draw(GraphicsContext gc);

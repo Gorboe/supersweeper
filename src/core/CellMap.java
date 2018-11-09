@@ -20,6 +20,10 @@ public class CellMap {
         setNumbers();
     }
 
+    public Cell[][] getCells() {
+        return cells;
+    }
+
     private void createMap(){
         int y = 0;
         int x;

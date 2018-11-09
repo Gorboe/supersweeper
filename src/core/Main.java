@@ -1,5 +1,6 @@
 package core;
 
+import controllers.ClassicController;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +41,18 @@ public class Main extends Application {
     }
 
     public static void mouseClickedEvent(MouseEvent e){
-
-        System.out.println("hi");
+        Cell[][] cells = ClassicController.getMap().getCells();
+        for(int i = 0; i < ClassicController.getCellWidth(); i++){
+            for(int j = 0; j < ClassicController.getCellHeight(); j++){
+                if(e.getX() > cells[j][i].getPosX() && e.getX() < cells[j][i].getPosX() + cells[j][i].getWidth()
+                        && e.getY() > cells[j][i].getPosY() && e.getY() < cells[j][i].getPosY() + cells[j][i].getHeight()){
+                    cells[j][i].setRevealed(true);
+                    if(cells[j][i].getNeighbors() == 0){
+                        ClassicController.getMap().flowEmptyTiles(j, i);
+                    }
+                    ClassicController.draw();
+                }
+            }
+        }
     }
 }

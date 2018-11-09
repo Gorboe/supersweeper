@@ -26,6 +26,16 @@ public class Square extends Cell {
         return height;
     }
 
+    @Override
+    public int getPosX() {
+        return posX;
+    }
+
+    @Override
+    public int getPosY() {
+        return posY;
+    }
+
     public void draw(GraphicsContext gc){
         if(!isRevealed()){
             gc.setFill(Color.BLACK);
