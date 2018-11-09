@@ -73,7 +73,27 @@ public class Triangle extends Cell {
     }
 
     public void draw(GraphicsContext gc){
-        gc.setFill(Color.BLACK);
+        if(!isRevealed()){
+            gc.setFill(Color.BLACK);
+            gc.fillPolygon(xPoints, yPoints, 3);
+            return;
+        }
+        if(!isBomb()){
+            //display number
+            gc.setFill(Color.GREY);
+            gc.fillPolygon(xPoints, yPoints, 3);
+            return;
+        }
+
+        //display bomb
+        gc.setFill(Color.GREY);
         gc.fillPolygon(xPoints, yPoints, 3);
+        if(!reversed){
+            gc.setFill(Color.BLACK);
+            gc.fillOval(posX+5, posY+20, 15, 15);
+        }else{
+            gc.setFill(Color.BLACK);
+            gc.fillOval(posX+20, posY+5, 15, 15);
+        }
     }
 }

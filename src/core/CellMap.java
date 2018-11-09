@@ -24,7 +24,7 @@ public class CellMap {
 
         createMap();
         setBombs();
-        //setNumbers();
+        setNumbers();
     }
 
     public String getType() {
@@ -78,34 +78,43 @@ public class CellMap {
     }
 
     private void setNumbers(){
-        for(int i = 0; i < height; i++){
-            for(int j = 0; j < width; j++){
-                int neighborCount = 0;
-                if(i-1 >= 0 && j-1 >= 0 && cells[j-1][i-1].isBomb()){ // -1 | -1
-                    neighborCount++;
+        int neighborCount = 0;
+        if(type.equals("square")){
+            for(int i = 0; i < height; i++){
+                for(int j = 0; j < width; j++){
+                    if(i-1 >= 0 && j-1 >= 0 && cells[j-1][i-1].isBomb()){ // -1 | -1
+                        neighborCount++;
+                    }
+                    if(i-1 >= 0 && cells[j][i-1].isBomb()){ // 0 | -1
+                        neighborCount++;
+                    }
+                    if(i-1 >= 0 && j+1 < width && cells[j+1][i-1].isBomb()){ // 1 | -1
+                        neighborCount++;
+                    }
+                    if(j-1 >= 0 && cells[j-1][i].isBomb()){ // -1 | 0
+                        neighborCount++;
+                    }
+                    if(j+1 < width && cells[j+1][i].isBomb()){ // 1 | 0
+                        neighborCount++;
+                    }
+                    if(j-1 >= 0 && i+1 < height && cells[j-1][i+1].isBomb()){ // -1 | 1
+                        neighborCount++;
+                    }
+                    if(i+1 < height && cells[j][i+1].isBomb()){ // 0 | 1
+                        neighborCount++;
+                    }
+                    if(i+1 < height && j+1 < width && cells[j+1][i+1].isBomb()){ // 1 | 1
+                        neighborCount++;
+                    }
+                    cells[j][i].setNeighbors(neighborCount);
                 }
-                if(i-1 >= 0 && cells[j][i-1].isBomb()){ // 0 | -1
-                    neighborCount++;
+            }
+        }else if(type.equals("triangle")){
+            for(int i = 0; i < height; i++) {
+                for (int j = 0; j < width; j++) {
+                    neighborCount = 1;
+                    cells[j][i].setNeighbors(neighborCount);
                 }
-                if(i-1 >= 0 && j+1 < width && cells[j+1][i-1].isBomb()){ // 1 | -1
-                    neighborCount++;
-                }
-                if(j-1 >= 0 && cells[j-1][i].isBomb()){ // -1 | 0
-                    neighborCount++;
-                }
-                if(j+1 < width && cells[j+1][i].isBomb()){ // 1 | 0
-                    neighborCount++;
-                }
-                if(j-1 >= 0 && i+1 < height && cells[j-1][i+1].isBomb()){ // -1 | 1
-                    neighborCount++;
-                }
-                if(i+1 < height && cells[j][i+1].isBomb()){ // 0 | 1
-                    neighborCount++;
-                }
-                if(i+1 < height && j+1 < width && cells[j+1][i+1].isBomb()){ // 1 | 1
-                    neighborCount++;
-                }
-                cells[j][i].setNeighbors(neighborCount);
             }
         }
     }
