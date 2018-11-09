@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -39,6 +40,8 @@ public class TrioController implements Initializable {
     }
 
     public static void draw(){
+        gc.setFill(Color.WHITE);
+        gc.fillRect(0,0, Main.getPrimaryStage().getWidth(), Main.getPrimaryStage().getHeight());
         map.draw(gc);
     }
 

@@ -4,6 +4,7 @@ import celltypes.Square;
 import celltypes.Triangle;
 import controllers.TrioController;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class CellMap {
     private int width;
